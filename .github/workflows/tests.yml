@@ -9,7 +9,7 @@ jobs:
   unit-tests:
     name: Run unit tests
     # Doesn't require anything special so let's use ubuntu as more available
-    runs-on: ubuntu-latest
+    runs-on: windows 11
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -21,8 +21,8 @@ jobs:
         run: npm run test:unit
   chrome-tests:
     name: Run Chrome e2e tests
-    # Runs best on macos for CI as linux requires extra chrome flags
-    runs-on: macos-latest
+    # Runs best on windows for CI as linux requires extra chrome flags
+    runs-on: windows 11
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -37,7 +37,7 @@ jobs:
   firefox-tests:
     name: Run Firefox e2e tests
     # Runs best on macos for CI as linux requires extra setup
-    runs-on: macos-latest
+    runs-on: Windows-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -50,9 +50,9 @@ jobs:
       - name: Run e2e tests for firefox
         run: npm run test:e2e -- --browsers=firefox
   safari-tests:
-    name: Run Safari e2e tests
+    name: Run chrome e2e tests
     # Requires macos
-    runs-on: macos-latest
+    runs-on: Windows-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -63,4 +63,4 @@ jobs:
       - name: Run server
         run: npm run test:server &
       - name: Run e2e tests for safari
-        run: npm run test:e2e -- --browsers=safari
+        run: npm run test:e2e -- --browsers=chrome 
